@@ -74,6 +74,9 @@ const generateJournal = async ({ prevId }) => {
 }
 
 const getTitles = async () => {
+  if (!fs.existsSync('history.json'))
+    await fs.promises.writeFile('history.json', JSON.stringify([]))
+
   try {
     const data = await fs.promises.readFile('history.json', 'utf8')
     const history = JSON.parse(data)
