@@ -133,7 +133,7 @@ async function main() {
   }, 60000)
 }
 
-// main().catch((err) => {
-//   console.error(err)
-//   process.exit(1)
-// })
+main().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
