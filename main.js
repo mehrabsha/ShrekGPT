@@ -130,7 +130,7 @@ async function main() {
       content: newArticle.content,
     })
     console.log('content', newArticle.content, '\n\n\n\n')
-  }, 60000)
+  }, 5400000)
 }
 
 main().catch((err) => {
