@@ -3,12 +3,8 @@ import { oraPromise } from 'ora'
 import { ChatGPTAPI } from 'chatgpt'
 import axios from 'axios'
 import fs from 'fs'
-import TelegramBot from 'node-telegram-bot-api'
 
 dotenv.config()
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, {
-  polling: true,
-})
 
 const postArticle = async ({ title, content }) => {
   addToHistory(title, content)
@@ -34,16 +30,8 @@ const postArticle = async ({ title, content }) => {
       },
     })
     console.log('POSTED', res.data.url)
-    bot.sendMessage(
-      '170887429',
-      `new post \n\n title:${title} \n\n content:${content}`
-    )
   } catch (error) {
     console.log('error', error)
-    bot.sendMessage(
-      '170887429',
-      `ERROR \n\n title:${title} \n\n content:${content} \n\n error : ${error}`
-    )
   }
 }
 
@@ -133,7 +121,7 @@ async function main() {
   }, 60000)
 }
 
-// main().catch((err) => {
-//   console.error(err)
-//   process.exit(1)
-// })
+main().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
